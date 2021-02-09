@@ -8,8 +8,7 @@ public class BubbleSort implements Sorter {
         int temp, numberOfIterations = 0;
         boolean swapsMade = true;
         if(unsortedArray.length < 1) {
-            Printer.printErrorMessage("The array is empty and cannot be sorted!");
-            return null;
+            throw new IllegalArgumentException("The array is empty and cannot be sorted");
         } else {
             while (swapsMade) {
                 swapsMade = false;
@@ -26,8 +25,7 @@ public class BubbleSort implements Sorter {
                 }
             }
             if (numberOfIterations == 0) {
-                Printer.printErrorMessage("This array is already sorted!");
-                return null;
+                throw new IllegalArgumentException("The array is already sorted");
             } else {
                 return unsortedArray;
             }

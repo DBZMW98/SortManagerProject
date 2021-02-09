@@ -1,8 +1,6 @@
 package com.sparta.wahdel.sorters;
 
-import com.sparta.wahdel.Printer;
-
-public class MergeSort {
+public class MergeSort implements Sorter{
     private static int[] merge(int[] leftArray, int[] rightArray) {
         int leftArraySize = leftArray.length, rightArraySize = rightArray.length, mergedArraySize = leftArraySize + rightArraySize,
                 leftArrayCount = 0, rightArrayCount = 0, mergedArrayCount = 0;
@@ -27,22 +25,31 @@ public class MergeSort {
         return mergedArray;
     }
 
-    public static int[] mergeSort(int[] unsortedArray) {
+    @Override
+    public int[] sortArray(int[] unsortedArray) {
+        int[] leftArray, rightArray;
+        int left = 0, right = unsortedArray.length, middle = (left+right)/2;
+
+        if (unsortedArray.length < 1) {
+            throw new IllegalArgumentException("The array is empty and cannot be sorted");
+        }
+
         if (unsortedArray.length < 2) {
             return unsortedArray;
         }
-        int[] leftArray, rightArray;
-        int left = 0, right = unsortedArray.length, middle = (left+right)/2;
+
         leftArray = new int[middle];
         rightArray = new int[right - middle];
+
         for (int count = left; count < leftArray.length; count++) {
             leftArray[count] = unsortedArray[count];
         }
+
         for (int count = middle; count < right; count++) {
             rightArray[count-middle] = unsortedArray[count];
         }
-        leftArray = mergeSort(leftArray);
-        rightArray = mergeSort(rightArray);
+        leftArray = sortArray(leftArray);
+        rightArray = sortArray(rightArray);
         unsortedArray = merge(leftArray, rightArray);
         return unsortedArray;
     }
