@@ -49,22 +49,13 @@ public class Starter {
 //        Printer.printIntArray(mergeSort.sortArray(array4));
 
         Printer.printMessage("---------------Binary Search Tree---------------");
-        //Printer.printInteger(binarySearchTree.getRootElement());
         binarySearchTree.addElement(5);
         binarySearchTree.addElement(1);
-        binarySearchTree.addElement(6);
-        Printer.printInteger(binarySearchTree.getRootElement());
-        try {
-            Printer.printInteger(binarySearchTree.getLeftChild(5));
-        } catch (ChildNotFoundException cnfe) {
-
-        }
-        
-        try {
-            Printer.printInteger(binarySearchTree.getRightChild(5));
-        } catch (ChildNotFoundException cnfe) {
-
-        }
-
+        binarySearchTree.addElement(10);
+        binarySearchTree.addElement(2);
+        binarySearchTree.addElement(3);
+        binarySearchTree.addElement(7);
+        binarySearchTree.addElement(8);
+        Printer.printMessage("Root element: " + binarySearchTree.getRootElement());
     }
 }

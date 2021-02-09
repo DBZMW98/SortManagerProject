@@ -1,5 +1,6 @@
 package com.sparta.wahdel.sorters;
 
+import com.sparta.wahdel.Printer;
 import com.sparta.wahdel.exceptions.ChildNotFoundException;
 
 public class BinarySearchTree implements BinaryTree {
@@ -30,11 +31,23 @@ public class BinarySearchTree implements BinaryTree {
         if (root == null) {
             root = new Node(element);
         } else {
-            Node current = root;
-            if (element < current.data) {
-                current.leftChild = new Node(element);
+            Node current, previous;
+            current = previous = root;
+            while (current != null) {
+                if (element < current.data) {
+                    previous = current;
+                    current = current.leftChild;
+                } else {
+                    previous = current;
+                    current = current.rightChild;
+                }
+            }
+            if (element < previous.data) {
+                previous.leftChild = new Node(element);
+                Printer.printMessage(previous.data + ": Left: " + previous.leftChild.data);
             } else {
-                current.rightChild = new Node(element);
+                previous.rightChild = new Node(element);
+                Printer.printMessage(previous.data + ": Right: " + previous.rightChild.data);
             }
         }
     }
@@ -51,14 +64,12 @@ public class BinarySearchTree implements BinaryTree {
 
     @Override
     public int getLeftChild(int element) throws ChildNotFoundException {
-        boolean found = true;
-
-        return root.leftChild.data;
+        return 0;
     }
 
     @Override
     public int getRightChild(int element) throws ChildNotFoundException {
-        return root.rightChild.data;
+        return 0;
     }
 
     @Override
