@@ -1,6 +1,7 @@
 package com.sparta.wahdel.sorters;
 
 import com.sparta.wahdel.exceptions.ChildNotFoundException;
+import com.sparta.wahdel.exceptions.EmptyTreeException;
 
 public interface BinaryTree {
     int getRootElement();
